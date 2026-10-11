@@ -1,0 +1,488 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Sổ Mẫu Đơn Học Đường</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&family=Tinos:ital,wght@0,400;0,700;1,400&display=swap">
+<style>
+/* Layout: bàn làm việc hai cột — phiếu điền bên trái, tờ đơn A4 bên phải; điện thoại xếp chồng */
+:root{
+  --bg:#eef0f4; --panel:#ffffff; --fg:#1d2230; --muted:#5f6678; --line:#d8dce5;
+  --ink:#4b2c9b;          /* mực tím học trò */
+  --ink-soft:#ece6fb;
+  --paper:#ffffff; --paper-fg:#111; --paper-shadow:0 1px 2px rgba(20,24,40,.08),0 8px 28px rgba(20,24,40,.10);
+  --ui:"Be Vietnam Pro",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --doc:"Tinos","Times New Roman",Times,serif;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#14161d; --panel:#1c1f29; --fg:#e7e9f0; --muted:#9aa1b4; --line:#2f3443;
+  --ink:#b9a2ff; --ink-soft:#2c2547; --paper-shadow:0 8px 30px rgba(0,0,0,.5); color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#14161d; --panel:#1c1f29; --fg:#e7e9f0; --muted:#9aa1b4; --line:#2f3443;
+  --ink:#b9a2ff; --ink-soft:#2c2547; --paper-shadow:0 8px 30px rgba(0,0,0,.5); color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font-family:var(--ui);font-size:14px;line-height:1.5}
+.wrap{max-width:1240px;margin:0 auto;padding-inline:16px;padding-block:20px 48px}
+header.top{display:flex;flex-wrap:wrap;gap:12px;align-items:flex-end;justify-content:space-between;margin-bottom:18px}
+header.top h1{margin:0;font-size:1.45rem;font-weight:700;letter-spacing:-.01em;text-wrap:balance}
+header.top p{margin:2px 0 0;color:var(--muted)}
+.grid{display:grid;grid-template-columns:minmax(0,400px) minmax(0,1fr);gap:24px;align-items:start}
+@media (max-width:900px){.grid{grid-template-columns:minmax(0,1fr)}}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:18px;display:flex;flex-direction:column;gap:18px;min-width:0}
+@media (min-width:901px){.panel{position:sticky;top:calc(env(safe-area-inset-top,0px) + 12px);max-height:calc(100vh - 24px);overflow:auto}}
+fieldset{border:0;margin:0;padding:0;display:flex;flex-direction:column;gap:10px;min-width:0}
+legend{font-size:.72rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:8px;padding:0}
+.tpls{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.tpl{appearance:none;text-align:left;border:1px solid var(--line);background:transparent;color:var(--fg);border-radius:9px;padding:9px 10px;font:inherit;font-size:.86rem;line-height:1.3;cursor:pointer}
+.tpl:hover{border-color:var(--ink)}
+.tpl[aria-pressed="true"]{border-color:var(--ink);background:var(--ink-soft);color:var(--fg);font-weight:600}
+.seg{display:flex;border:1px solid var(--line);border-radius:9px;overflow:hidden}
+.seg button{flex:1;appearance:none;border:0;background:transparent;color:var(--fg);font:inherit;padding:8px;cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--ink);color:#fff;font-weight:600}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.row>*{min-width:0}
+label.f{display:flex;flex-direction:column;gap:4px;font-size:.8rem;color:var(--muted);font-weight:500}
+input[type=text],input[type=date],input[type=tel],select,textarea{width:100%;font:inherit;font-size:.92rem;color:var(--fg);background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:8px 10px}
+textarea{resize:vertical;min-height:58px}
+input:focus,select:focus,textarea:focus,button:focus-visible{outline:2px solid var(--ink);outline-offset:1px}
+.chk{display:flex;gap:8px;align-items:flex-start;font-size:.88rem;color:var(--fg);cursor:pointer}
+.chk input{margin-top:3px;accent-color:var(--ink)}
+.hint{font-size:.78rem;color:var(--muted);margin:0}
+.btns{display:flex;flex-wrap:wrap;gap:8px}
+.btn{appearance:none;border:1px solid var(--line);background:var(--panel);color:var(--fg);font:inherit;font-weight:500;border-radius:8px;padding:8px 12px;cursor:pointer}
+.btn.primary{background:var(--ink);border-color:var(--ink);color:#fff}
+.btn:hover{filter:brightness(1.06)}
+.toast{font-size:.82rem;color:var(--ink);min-height:1.2em}
+.demo{display:flex;gap:10px;align-items:center;justify-content:space-between;background:var(--ink-soft);border-radius:8px;padding:8px 10px;font-size:.82rem}
+.demo button{appearance:none;border:0;background:none;color:var(--ink);font:inherit;font-weight:600;cursor:pointer;padding:0}
+
+/* Tờ đơn — khổ A4 (210 × 297 mm), lề trên 20 mm, dưới 20 mm, trái 30 mm, phải 15 mm; chữ Times 13 pt, giãn dòng ~1,4 */
+.stage{min-width:0;overflow:hidden}
+.paperFit{position:relative;margin:0 auto}
+.paper{position:absolute;top:0;left:0;transform-origin:top left;box-sizing:border-box;width:210mm;min-height:297mm;padding:20mm 15mm 20mm 30mm;background:var(--paper);color:var(--paper-fg);box-shadow:var(--paper-shadow);font-family:var(--doc);font-size:13pt;line-height:1.4;color-scheme:light}
+.paper p{margin:0 0 6pt;text-align:justify}
+.qh{text-align:center;margin-bottom:6pt}
+.qh b{display:block;font-size:13pt;font-weight:700;text-transform:uppercase}
+.qh .tn{display:inline-block;font-size:14pt;font-weight:700;padding-bottom:2pt;border-bottom:.75pt solid #000}
+.paper p.place{text-align:right;font-style:italic;margin:10pt 0 20pt}
+.paper h2{text-align:center;font-size:14pt;font-weight:700;margin:0 0 16pt;line-height:1.35;text-wrap:balance}
+.kg{display:grid;grid-template-columns:auto 1fr;gap:0 6pt;margin:0 0 12pt 15mm}
+.kg ul{margin:0;padding:0;list-style:none}
+.kg li::before{content:"- "}
+.kg li.solo::before{content:""}
+.tpl[data-id="tudo"]{grid-column:1/-1;border-style:dashed}
+.sign{display:grid;grid-template-columns:1fr 1fr;text-align:center;margin-top:12pt}
+.sign b{display:block;font-weight:700}
+.sign i{display:block}
+.sign .space{height:25mm}
+.v{color:inherit}
+.paper.mark .v{color:#4b2c9b;background:#f1ecfd;border-radius:2px;padding:0 2px}
+.blank{color:#555;letter-spacing:.05em}
+.indent{text-indent:12.7mm}
+@media (prefers-reduced-motion:no-preference){.tpl,.btn{transition:background .15s,border-color .15s}}
+</style>
+
+<div class="wrap">
+  <header class="top">
+    <div>
+      <h1>Sổ mẫu đơn học đường</h1>
+      <p>Điền thông tin một lần, chọn loại đơn, tờ đơn bên cạnh tự cập nhật.</p>
+    </div>
+  </header>
+
+  <div class="grid">
+    <form class="panel" id="form" autocomplete="on">
+      <div class="demo" id="demo" hidden>
+        <span>Đang hiển thị thông tin mẫu.</span>
+        <button type="button" id="clearDemo">Xóa để điền của bạn</button>
+      </div>
+
+      <fieldset>
+        <legend>1 · Chọn mẫu đơn</legend>
+        <div class="tpls" id="tpls"></div>
+      </fieldset>
+
+      <fieldset id="fsWriter">
+        <legend>2 · Người viết đơn</legend>
+        <div class="seg" id="writer">
+          <button type="button" data-w="hs">Học sinh tự viết</button>
+          <button type="button" data-w="ph">Phụ huynh viết</button>
+        </div>
+      </fieldset>
+
+      <fieldset id="fsStudent">
+        <legend>3 · Thông tin học sinh</legend>
+        <label class="f">Họ và tên học sinh<input type="text" id="name"></label>
+        <div class="row">
+          <label class="f">Lớp<input type="text" id="lop"></label>
+          <label class="f">Trường<input type="text" id="truong"></label>
+        </div>
+      </fieldset>
+
+      <fieldset id="specific">
+        <legend id="lgBody">4 · Nội dung đơn</legend>
+        <div class="seg" id="mode">
+          <button type="button" data-m="tpl">Dùng nội dung mẫu</button>
+          <button type="button" data-m="own">Tự viết nội dung</button>
+        </div>
+        <div id="specFields" style="display:flex;flex-direction:column;gap:10px"></div>
+        <label class="f" id="reasonLabel">Lý do<textarea id="other" placeholder="Nhập lý do của bạn"></textarea></label>
+        <div id="ownBox" style="display:flex;flex-direction:column;gap:8px" hidden>
+          <label class="f">Nội dung đơn (sửa theo câu văn của bạn)<textarea id="ownText" rows="11"></textarea></label>
+          <p class="hint">Mỗi lần xuống dòng là một đoạn mới. Phần quốc hiệu, kính gửi, thông tin và chữ ký vẫn tự điền.</p>
+          <div class="btns"><button type="button" class="btn" id="resetOwn">Lấy lại nội dung mẫu</button></div>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend id="lgPlace">5 · Nơi và ngày viết</legend>
+        <div class="row">
+          <label class="f">Nơi viết<input type="text" id="place" placeholder="VD: TP. Hồ Chí Minh"></label>
+          <label class="f">Ngày viết<input type="date" id="date"></label>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Xuất đơn</legend>
+        <div class="btns">
+          <button type="button" class="btn primary" id="word">Tải về Word</button>
+          <button type="button" class="btn" id="pdf">Tải về PDF</button>
+          <button type="button" class="btn" id="copy">Sao chép nội dung</button>
+          <button type="button" class="btn" id="reset">Xóa hết</button>
+        </div>
+        <label class="chk"><input type="checkbox" id="mark" checked> Tô màu chỗ đã điền trên màn hình (file PDF luôn in mực đen)</label>
+        <p class="toast" id="toast" role="status"></p>
+        <p class="hint">File Word và PDF đều khổ A4, đúng lề và font chữ như tờ đơn bên cạnh, mở ra là in được ngay. File Word vẫn sửa tiếp được. Thông tin được lưu trên trình duyệt này để lần sau mở lại không phải gõ lại.</p>
+      </fieldset>
+    </form>
+
+    <div class="stage" id="stage"><div class="paperFit" id="paperFit"><article class="paper mark" id="paper" aria-live="polite"></article></div></div>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+<script>
+const $ = id => document.getElementById(id);
+const COMMON = ["name","lop","truong","place","date","other"];
+
+const TEMPLATES = [
+  { id:"bannu", short:"Không học tiếng Anh bản ngữ",
+    title:"ĐƠN XIN KHÔNG ĐĂNG KÝ HỌC TIẾNG ANH BẢN NGỮ",
+    fields:[{id:"namhoc",label:"Năm học",auto:"schoolYear"}],
+    reasons:["Đang theo học tiếng Anh tại trung tâm/cơ sở khác","Điều kiện kinh tế gia đình chưa cho phép đóng thêm học phí","Lịch học trùng với lịch học/hoạt động khác","Đã có chứng chỉ tiếng Anh (đính kèm bản sao)"],
+    body:(d,h)=>`
+      <p class="indent">Căn cứ thông báo của nhà trường về việc tổ chức chương trình học tiếng Anh với giáo viên bản ngữ năm học ${h.f(d.namhoc,"20…… – 20……")}, ${h.I} xin trình bày như sau:</p>
+      <p class="indent">${h.Icap} làm đơn này kính đề nghị Ban Giám hiệu và ${h.gv} cho phép ${h.child} <b>không đăng ký tham gia</b> chương trình học tiếng Anh với giáo viên bản ngữ, vì lý do: ${h.reasons()}</p>
+      <p class="indent">${h.Icap} xin cam kết ${h.child} vẫn tham gia đầy đủ các tiết tiếng Anh chính khóa, tự giác ôn luyện và chấp hành sự sắp xếp của nhà trường trong thời gian diễn ra tiết học bản ngữ.</p>`},
+
+  { id:"nghihoc", short:"Xin nghỉ học có phép",
+    title:"ĐƠN XIN NGHỈ HỌC",
+    fields:[{id:"from",label:"Nghỉ từ ngày",type:"date"},{id:"to",label:"Đến hết ngày",type:"date"}],
+    reasons:["Bị ốm, cần nghỉ ngơi và điều trị","Gia đình có việc riêng","Đi khám, chữa bệnh theo lịch hẹn","Về quê có việc gia đình"],
+    body:(d,h)=>{const n=h.days(d.from,d.to);return `
+      <p class="indent">${h.Icap} làm đơn này kính xin Ban Giám hiệu và ${h.gv} cho phép ${h.child} được nghỉ học ${n?`<span class="v">${n} ngày</span>, `:""}từ ngày ${h.f(h.dmy(d.from),"……/……/………")} đến hết ngày ${h.f(h.dmy(d.to),"……/……/………")}, vì lý do: ${h.reasons()}</p>
+      <p class="indent">${h.Icap==="Tôi"
+        ? "Tôi xin cam kết sẽ nhắc nhở con tôi chép bài, học bù đầy đủ những nội dung đã nghỉ và thực hiện đúng nội quy của nhà trường."
+        : "Em xin hứa sẽ chép bài, học bù đầy đủ những nội dung đã nghỉ và thực hiện đúng nội quy của nhà trường."}</p>`}},
+
+  { id:"ngoaikhoa", short:"Không tham gia ngoại khóa",
+    title:"ĐƠN XIN KHÔNG THAM GIA HOẠT ĐỘNG NGOẠI KHÓA",
+    fields:[{id:"hoatdong",label:"Tên hoạt động",ph:"VD: Dã ngoại tại Củ Chi"},{id:"ngayhd",label:"Ngày diễn ra",type:"date"}],
+    reasons:["Sức khỏe không đảm bảo để tham gia","Gia đình có việc riêng trùng ngày tổ chức","Điều kiện kinh tế gia đình chưa cho phép","Không có người đưa đón"],
+    body:(d,h)=>`
+      <p class="indent">Nhà trường có tổ chức hoạt động ${h.f(d.hoatdong,"…………………………………………")} vào ngày ${h.f(h.dmy(d.ngayhd),"……/……/………")}.</p>
+      <p class="indent">${h.Icap} làm đơn này kính xin Ban Giám hiệu và ${h.gv} cho phép ${h.child} <b>không tham gia</b> hoạt động trên, vì lý do: ${h.reasons()}</p>
+      <p class="indent">${h.Icap} xin cam kết ${h.child} sẽ chấp hành sự sắp xếp của nhà trường trong thời gian diễn ra hoạt động và hoàn thành các nhiệm vụ học tập được giao.</p>`},
+
+  { id:"chuyenlop", short:"Xin chuyển lớp",
+    title:"ĐƠN XIN CHUYỂN LỚP",
+    fields:[{id:"lopmoi",label:"Lớp muốn chuyển đến"},{id:"tungay",label:"Từ ngày",type:"date"}],
+    reasons:["Thuận tiện hơn cho việc đưa đón","Phù hợp hơn với nguyện vọng chọn môn/khối học","Phù hợp hơn với lịch học thêm của gia đình","Lý do sức khỏe, cần điều chỉnh buổi học"],
+    extraTo:d=>`Giáo viên chủ nhiệm lớp ${d.lopmoi?`<span class="v">${esc(d.lopmoi)}</span>`:'……………'}`,
+    body:(d,h)=>`
+      <p class="indent">${h.Icap} làm đơn này kính xin Ban Giám hiệu cho phép ${h.child} được chuyển từ lớp ${h.f(d.lop,"……………")} sang lớp ${h.f(d.lopmoi,"……………")} kể từ ngày ${h.f(h.dmy(d.tungay),"……/……/………")}, vì lý do: ${h.reasons()}</p>
+      <p class="indent">${h.Icap} xin cam kết ${h.child} sẽ chấp hành tốt nội quy của lớp mới và của nhà trường.</p>`},
+
+  { id:"tudo", short:"Mẫu tự do (đơn bất kỳ, kể cả ngoài trường học)", free:true,
+    fields:[
+      {id:"ftitle",label:"Tên đơn",ph:"VD: Đơn xin xác nhận cư trú"},
+      {id:"fto",label:"Kính gửi (mỗi dòng một nơi nhận)",type:"textarea",rows:2,ph:"VD: Ủy ban nhân dân Phường Bến Thành"},
+      {id:"fname",label:"Họ tên người làm đơn"},
+      {id:"finfo",label:"Thông tin người làm đơn (mỗi dòng một mục, có thể để trống)",type:"textarea",rows:4,ph:"Ngày sinh: 01/01/2000\nSố CCCD: ……………\nĐịa chỉ: ……………\nSố điện thoại: ……………"},
+      {id:"fbody",label:"Nội dung đơn (mỗi lần xuống dòng là một đoạn)",type:"textarea",rows:9,
+       def:"Tôi làm đơn này kính đề nghị quý cơ quan …………………………………………………………\nLý do: ……………………………………………………………………………\nTôi xin cam đoan những thông tin trên là đúng sự thật và xin chịu trách nhiệm trước pháp luật.\nKính mong quý cơ quan xem xét, giải quyết. Tôi xin chân thành cảm ơn!"}],
+    body:()=>""}
+];
+
+const SAMPLE = {tpl:"bannu",writer:"hs",name:"Nguyễn Minh Anh",lop:"9A3",truong:"THCS Lê Quý Đôn",place:"",other:"em đang theo học tiếng Anh tại một trung tâm ngoại ngữ khác",spec:{}};
+const KEY="mau-don-hoc-duong-v1";
+
+function today(){const t=new Date();return t.getFullYear()+"-"+String(t.getMonth()+1).padStart(2,"0")+"-"+String(t.getDate()).padStart(2,"0")}
+function schoolYear(){const t=new Date(),y=t.getFullYear();return t.getMonth()>=7?`${y} – ${y+1}`:`${y-1} – ${y}`}
+function esc(s){return String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]))}
+function dmy(v){if(!v)return"";const[y,m,d]=v.split("-");return`${d}/${m}/${y}`}
+
+let state, isDemo=false;
+try{const s=localStorage.getItem(KEY);if(s)state=JSON.parse(s)}catch(e){}
+if(!state){state=structuredClone(SAMPLE);isDemo=true}
+state.spec=state.spec||{};
+const DEFAULT_PLACE="TP. Hồ Chí Minh";
+if(!state.date)state.date=today();
+if(!state.place)state.place=DEFAULT_PLACE;
+if(!TEMPLATES.some(t=>t.id===state.tpl))state.tpl="bannu";
+
+function spec(){const t=state.tpl;state.spec[t]=state.spec[t]||{reasons:[]};return state.spec[t]}
+function tpl(){return TEMPLATES.find(t=>t.id===state.tpl)||TEMPLATES[0]}
+function save(){try{if(!isDemo)localStorage.setItem(KEY,JSON.stringify(state))}catch(e){}}
+
+/* ---------- build controls ---------- */
+const tplsEl=$("tpls");
+TEMPLATES.forEach(t=>{const b=document.createElement("button");b.type="button";b.className="tpl";b.textContent=t.short;b.dataset.id=t.id;
+  b.onclick=()=>{state.tpl=t.id;buildSpecific();render()};tplsEl.appendChild(b)});
+document.querySelectorAll("#writer button").forEach(b=>b.onclick=()=>{state.writer=b.dataset.w;render()});
+
+COMMON.forEach(id=>{const el=$(id);el.addEventListener("input",()=>{state[id]=el.value;touch();render()})});
+
+function buildSpecific(){
+  const t=tpl(),s=spec(),box=$("specFields");box.innerHTML="";
+  t.fields.forEach(f=>{
+    if(f.auto==="schoolYear"&&!s[f.id])s[f.id]=schoolYear();
+    if(f.def!==undefined&&s[f.id]===undefined)s[f.id]=f.def;
+    const l=document.createElement("label");l.className="f";l.textContent=f.label;
+    const i=document.createElement(f.type==="textarea"?"textarea":"input");
+    if(f.type==="textarea")i.rows=f.rows||7;else i.type=f.type||"text";
+    i.id="sp_"+t.id+"_"+f.id;i.value=s[f.id]||"";if(f.ph)i.placeholder=f.ph;
+    i.oninput=()=>{s[f.id]=i.value;touch();render()};l.appendChild(i);box.appendChild(l)});
+  syncMode();
+}
+
+let lastTplBody="";
+function htmlToText(html){const div=document.createElement("div");div.innerHTML=html;
+  return [...div.children].map(e=>e.textContent.replace(/\s+/g," ").trim()).filter(Boolean).join("\n")}
+function syncMode(){const s=spec(),free=!!tpl().free,own=!!s.ownMode&&!free;
+  $("fsWriter").hidden=free;$("fsStudent").hidden=free;$("mode").hidden=free;
+  $("lgBody").textContent=(free?"2":"4")+" · Nội dung đơn";$("lgPlace").textContent=(free?"3":"5")+" · Nơi và ngày viết";
+  $("specFields").hidden=own;$("reasonLabel").hidden=own||free;$("ownBox").hidden=!own;
+  if(document.activeElement!==$("ownText"))$("ownText").value=s.ownText||"";
+  document.querySelectorAll("#mode button").forEach(b=>b.setAttribute("aria-pressed",(b.dataset.m==="own")===own))}
+document.querySelectorAll("#mode button").forEach(b=>b.onclick=()=>{
+  const s=spec(),own=b.dataset.m==="own";
+  if(own&&!s.ownText){render();s.ownText=htmlToText(lastTplBody)}
+  s.ownMode=own;touch();syncMode();render()});
+$("ownText").addEventListener("input",e=>{spec().ownText=e.target.value;touch();render()});
+$("resetOwn").onclick=()=>{const s=spec();s.ownMode=false;render();s.ownText=htmlToText(lastTplBody);s.ownMode=true;touch();$("ownText").value=s.ownText;render()};
+
+function touch(){if(isDemo){isDemo=false}save();$("demo").hidden=true}
+
+/* ---------- render paper ---------- */
+function render(){
+  const d=Object.assign({},state,spec()),t=tpl(),ph=state.writer==="ph";
+  document.querySelectorAll(".tpl").forEach(b=>b.setAttribute("aria-pressed",b.dataset.id===t.id));
+  document.querySelectorAll("#writer button").forEach(b=>b.setAttribute("aria-pressed",b.dataset.w===(state.writer||"hs")));
+  COMMON.forEach(id=>{const el=$(id);if(document.activeElement!==el)el.value=state[id]||""});
+  $("demo").hidden=!isDemo;
+
+  const f=(v,dots)=>v?`<span class="v">${esc(v)}</span>`:`<span class="blank">${dots||"……………………"}</span>`;
+  const h={f,dmy,
+    I:ph?"tôi":"em", Icap:ph?"Tôi":"Em", child:ph?"con tôi":"em",
+    gv:"giáo viên chủ nhiệm",
+    days:(a,b)=>{if(!a||!b)return 0;const n=Math.round((new Date(b)-new Date(a))/864e5)+1;return n>0?n:0},
+    reasons:()=>d.other
+      ? `<span class="v">${esc(d.other.trim().replace(/\s*\n+\s*/g," ").replace(/[.\s]+$/,""))}</span>.`
+      : `<span class="blank">……………………………………………………………………………</span>`
+  };
+  const date=state.date?state.date.split("-"):null;
+  const placeLine=`${f(state.place,"……………")}, ngày ${date?`<span class="v">${date[2]}</span>`:"……"} tháng ${date?`<span class="v">${date[1]}</span>`:"……"} năm ${date?`<span class="v">${date[0]}</span>`:"20……"}`;
+
+  const qhHtml=`<div class="qh"><b>CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM</b><span class="tn">Độc lập – Tự do – Hạnh phúc</span></div>
+    <p class="place">${placeLine}</p>`;
+  const signHtml=nm=>`<div class="sign"><div></div><div><b>Người làm đơn</b><i>(Ký và ghi rõ họ tên)</i><div class="space"></div>${nm}</div></div>`;
+  if(t.free){
+    const s=spec(),lines=v=>(v||"").split(/\n+/).map(x=>x.trim()).filter(Boolean);
+    const to=lines(s.fto),inf=lines(s.finfo),body=lines(s.fbody);
+    const toHtml=to.length?to.map(x=>`<li${to.length===1?' class="solo"':""}><span class="v">${esc(x)}</span></li>`).join(""):`<li class="solo">……………………………………………………</li>`;
+    $("paper").innerHTML=`${qhHtml}
+      <h2>${s.ftitle?`<span class="v">${esc(s.ftitle.toLocaleUpperCase("vi"))}</span>`:"ĐƠN ………………………………………"}</h2>
+      <div class="kg"><b>Kính gửi:</b><ul>${toHtml}</ul></div>
+      <p>Tôi tên là: ${f(s.fname)}</p>
+      ${inf.map(x=>`<p><span class="v">${esc(x)}</span></p>`).join("")}
+      ${body.length?body.map(x=>`<p class="indent"><span class="v">${esc(x)}</span></p>`).join(""):"<p>…………………………………………………………………………………</p><p>…………………………………………………………………………………</p>"}
+      ${signHtml(f(s.fname,"…………………………"))}`;
+    return;
+  }
+
+  const info = ph ? `
+    <p>Tôi là phụ huynh của học sinh: ${f(state.name)}</p>
+    <p>Lớp: ${f(state.lop,"…………")} &nbsp; Trường: ${f(state.truong,"……………………")}</p>` : `
+    <p>Em tên là: ${f(state.name)}</p>
+    <p>Lớp: ${f(state.lop,"…………")} &nbsp; Trường: ${f(state.truong,"……………………")}</p>`;
+
+  const signs = `
+    <div class="sign"><div></div>
+    <div><b>Người làm đơn</b><i>(Ký và ghi rõ họ tên)</i><div class="space"></div>${ph?"…………………………":f(state.name,"…………………………")}</div></div>`;
+
+  lastTplBody = t.body(d,h) + `<p class="indent">${h.Icap} kính mong Ban Giám hiệu và ${h.gv} xem xét, chấp thuận. ${h.Icap} xin chân thành cảm ơn!</p>`;
+  const sp=spec();
+  const ownPs=(sp.ownText||"").split(/\n+/).map(x=>x.trim()).filter(Boolean);
+  const bodyOut = sp.ownMode
+    ? (ownPs.length ? ownPs.map(p=>`<p class="indent"><span class="v">${esc(p)}</span></p>`).join("") : `<p>…………………………………………………………………………………</p><p>…………………………………………………………………………………</p>`)
+    : lastTplBody;
+
+  $("paper").innerHTML = `
+    <div class="qh"><b>CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM</b><span class="tn">Độc lập – Tự do – Hạnh phúc</span></div>
+    <p class="place">${placeLine}</p>
+    <h2>${t.title}</h2>
+    <div class="kg"><b>Kính gửi:</b><ul>
+      <li>Ban Giám hiệu Trường ${f(state.truong,"……………………………")}</li>
+      <li>Giáo viên chủ nhiệm lớp ${f(state.lop,"……………")}</li>
+      ${t.extraTo?`<li>${t.extraTo(d)}</li>`:""}
+    </ul></div>
+    ${info}
+    ${bodyOut}
+    ${signs}`;
+}
+
+/* ---------- actions ---------- */
+$("mark").onchange=e=>$("paper").classList.toggle("mark",e.target.checked);
+$("clearDemo").onclick=()=>{state={tpl:state.tpl,writer:"hs",date:today(),place:DEFAULT_PLACE,spec:{}};isDemo=false;save();buildSpecific();render();$("name").focus()};
+let armed=false;
+$("reset").onclick=()=>{const b=$("reset");if(!armed){armed=true;b.textContent="Bấm lần nữa để xóa";setTimeout(()=>{armed=false;b.textContent="Xóa hết"},3000);return}
+  armed=false;b.textContent="Xóa hết";state={tpl:state.tpl,writer:state.writer,date:today(),place:DEFAULT_PLACE,spec:{}};isDemo=false;try{localStorage.removeItem(KEY)}catch(e){}buildSpecific();render();toast("Đã xóa toàn bộ thông tin.")};
+function toast(m){$("toast").textContent=m;clearTimeout(toast.t);toast.t=setTimeout(()=>$("toast").textContent="",3500)}
+$("copy").onclick=()=>{
+  const txt=$("paper").innerText.replace(/\n{3,}/g,"\n\n");
+  const fallback=()=>{const r=document.createRange();r.selectNodeContents($("paper"));const s=getSelection();s.removeAllRanges();s.addRange(r);toast("Đã bôi đen tờ đơn, nhấn Ctrl+C (hoặc giữ để sao chép) nhé.")};
+  try{navigator.clipboard.writeText(txt).then(()=>toast("Đã sao chép. Dán vào Word hoặc Google Docs để in."),fallback)}catch(e){fallback()}
+};
+$("form").addEventListener("submit",e=>e.preventDefault());
+
+/* ---------- PDF ---------- */
+const getDl = () => (window.claude && window.claude.use) ? window.claude.use("downloads").catch(()=>null) : Promise.resolve(null);
+getDl().then(dl=>{ if(!dl && window.claude){ $("pdf").hidden=true; $("word").hidden=true; } });
+
+async function makePdf(){
+  if(document.fonts&&document.fonts.ready) await document.fonts.ready;
+  const host=document.createElement("div");
+  host.style.cssText="position:fixed;left:-12000px;top:0;width:794px;background:#fff";
+  const clone=$("paper").cloneNode(true);
+  clone.removeAttribute("id");clone.classList.remove("mark");
+  clone.style.cssText="position:static;transform:none;box-shadow:none;margin:0;background:#fff;color:#000";
+  host.appendChild(clone);document.body.appendChild(host);
+  try{
+    const canvas=await html2canvas(clone,{scale:2.5,backgroundColor:"#ffffff",logging:false});
+    const pdf=new window.jspdf.jsPDF({unit:"mm",format:"a4",orientation:"portrait"});
+    let w=210,h=canvas.height*210/canvas.width;
+    if(h>297){h=297;w=canvas.width*297/canvas.height}
+    pdf.addImage(canvas.toDataURL("image/jpeg",0.95),"JPEG",(210-w)/2,0,w,h);
+    return pdf.output("blob");
+  }finally{host.remove()}
+}
+
+/* ---------- Word (.docx) ---------- */
+const X=s=>s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+function runsFrom(node,fmt){fmt=fmt||{};const out=[];
+  node.childNodes.forEach(n=>{
+    if(n.nodeType===3)out.push(Object.assign({t:n.nodeValue},fmt));
+    else if(n.nodeType===1){const tg=n.tagName,f=Object.assign({},fmt);
+      if(tg==="B"||tg==="STRONG")f.b=1; if(tg==="I"||tg==="EM")f.i=1;
+      out.push(...runsFrom(n,f))}});
+  return out}
+function para(runs,o){o=o||{};
+  // gom khoảng trắng như trình duyệt hiển thị
+  let prevSp=true;const rs=[];
+  runs.forEach(r=>{let t=(r.t||"").replace(/ /g," ").replace(/\s+/g," ");if(prevSp)t=t.replace(/^ /,"");if(!t)return;prevSp=/ $/.test(t);rs.push(Object.assign({},r,{t}))});
+  if(rs.length){const l=rs[rs.length-1];l.t=l.t.replace(/ $/,"")}
+  const ppr=(o.tabs||"")+(o.sp?`<w:spacing ${o.sp}/>`:"")+(o.ind?`<w:ind ${o.ind}/>`:"")+(o.jc?`<w:jc w:val="${o.jc}"/>`:"");
+  const body=rs.map(r=>{
+    const rpr=((r.b||o.b)?"<w:b/><w:bCs/>":"")+((r.i||o.i)?"<w:i/><w:iCs/>":"")+(o.sz?`<w:sz w:val="${o.sz}"/><w:szCs w:val="${o.sz}"/>`:"")+(o.u?'<w:u w:val="single"/>':"");
+    return r.t.split("\t").map((piece,k)=>(k?`<w:r>${rpr?`<w:rPr>${rpr}</w:rPr>`:""}<w:tab/></w:r>`:"")+(piece?`<w:r>${rpr?`<w:rPr>${rpr}</w:rPr>`:""}<w:t xml:space="preserve">${X(piece)}</w:t></w:r>`:"")).join("")}).join("");
+  return `<w:p>${ppr?`<w:pPr>${ppr}</w:pPr>`:""}${body}</w:p>`}
+const T=t=>[{t}];
+
+function buildDocxXml(){
+  const paper=$("paper");let xml="";
+  // khổ chữ: rộng 11906 − lề trái 1701 − lề phải 850 = 9355 twip
+  for(const el of paper.children){
+    if(el.classList.contains("qh")){
+      xml+=para(T(el.querySelector("b").textContent),{jc:"center",b:1,sp:'w:after="0"'});
+      xml+=para(T(el.querySelector(".tn").textContent),{jc:"center",b:1,u:1,sz:28,sp:'w:after="0"'});
+    }else if(el.classList.contains("place")){
+      xml+=para(runsFrom(el),{jc:"right",i:1,sp:'w:before="240" w:after="360"'});
+    }else if(el.tagName==="H2"){
+      xml+=para(runsFrom(el),{jc:"center",b:1,sz:28,sp:'w:after="320"'});
+    }else if(el.classList.contains("kg")){
+      const lis=[...el.querySelectorAll("li")];
+      lis.forEach((li,k)=>{
+        const lead=k===0?[{t:"Kính gửi:",b:1},{t:"\t"}]:[];
+        xml+=para([...lead,...(li.classList.contains("solo")?[]:[{t:"- "}]),...runsFrom(li)],{ind:'w:left="2552" w:hanging="1701"',sp:`w:after="${k===lis.length-1?240:0}"`});
+      });
+    }else if(el.classList.contains("sign")){
+      const cell=el.children[1];const name=[];let afterSpace=false;
+      cell.childNodes.forEach(n=>{if(n.nodeType===1&&n.classList.contains("space")){afterSpace=true;return}if(afterSpace)name.push(...(n.nodeType===3?[{t:n.nodeValue}]:runsFrom(n)))});
+      const c=(r,o)=>para(r,Object.assign({jc:"center",sp:'w:after="0"'},o));
+      const right=c(T(cell.querySelector("b").textContent),{b:1})+c(T(cell.querySelector("i").textContent),{i:1})+c([])+c([])+c([])+c([])+c(name);
+      const nob='<w:top w:val="nil"/><w:left w:val="nil"/><w:bottom w:val="nil"/><w:right w:val="nil"/><w:insideH w:val="nil"/><w:insideV w:val="nil"/>';
+      xml+=para([],{sp:'w:after="0"'});
+      xml+=`<w:tbl><w:tblPr><w:tblW w:w="9355" w:type="dxa"/><w:tblBorders>${nob}</w:tblBorders><w:tblLayout w:type="fixed"/></w:tblPr><w:tblGrid><w:gridCol w:w="4677"/><w:gridCol w:w="4678"/></w:tblGrid><w:tr><w:tc><w:tcPr><w:tcW w:w="4677" w:type="dxa"/></w:tcPr><w:p/></w:tc><w:tc><w:tcPr><w:tcW w:w="4678" w:type="dxa"/></w:tcPr>${right}</w:tc></w:tr></w:tbl>`;
+    }else if(el.tagName==="P"){
+      xml+=para(runsFrom(el),{jc:"both",ind:el.classList.contains("indent")?'w:firstLine="720"':""});
+    }
+  }
+  const sect='<w:sectPr><w:pgSz w:w="11906" w:h="16838"/><w:pgMar w:top="1134" w:right="850" w:bottom="1134" w:left="1701" w:header="567" w:footer="567" w:gutter="0"/></w:sectPr>';
+  return `<?xml version="1.0" encoding="UTF-8" standalone="yes"?><w:document xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main"><w:body>${xml}<w:p/>${sect}</w:body></w:document>`;
+}
+
+async function makeDocx(){
+  const zip=new JSZip();
+  zip.file("[Content_Types].xml",'<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types"><Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/><Default Extension="xml" ContentType="application/xml"/><Override PartName="/word/document.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.document.main+xml"/><Override PartName="/word/styles.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.styles+xml"/></Types>');
+  zip.file("_rels/.rels",'<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"><Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument" Target="word/document.xml"/></Relationships>');
+  zip.file("word/_rels/document.xml.rels",'<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"><Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/styles" Target="styles.xml"/></Relationships>');
+  zip.file("word/styles.xml",'<?xml version="1.0" encoding="UTF-8" standalone="yes"?><w:styles xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main"><w:docDefaults><w:rPrDefault><w:rPr><w:rFonts w:ascii="Times New Roman" w:hAnsi="Times New Roman" w:eastAsia="Times New Roman" w:cs="Times New Roman"/><w:sz w:val="26"/><w:szCs w:val="26"/><w:lang w:val="vi-VN" w:eastAsia="en-US" w:bidi="ar-SA"/></w:rPr></w:rPrDefault><w:pPrDefault><w:pPr><w:spacing w:after="120" w:line="336" w:lineRule="auto"/></w:pPr></w:pPrDefault></w:docDefaults><w:style w:type="paragraph" w:default="1" w:styleId="Normal"><w:name w:val="Normal"/><w:qFormat/></w:style><w:style w:type="table" w:default="1" w:styleId="TableNormal"><w:name w:val="Normal Table"/><w:tblPr><w:tblInd w:w="0" w:type="dxa"/><w:tblCellMar><w:top w:w="0" w:type="dxa"/><w:left w:w="108" w:type="dxa"/><w:bottom w:w="0" w:type="dxa"/><w:right w:w="108" w:type="dxa"/></w:tblCellMar></w:tblPr></w:style></w:styles>');
+  zip.file("word/document.xml",buildDocxXml());
+  return zip.generateAsync({type:"blob",mimeType:"application/vnd.openxmlformats-officedocument.wordprocessingml.document"});
+}
+
+function fileBase(){const t=tpl(),nm=(t.free?spec().fname:state.name)||"";return `${t.free?(spec().ftitle||"Don"):t.short}${nm?" - "+nm:""}`.replace(/[\\/:*?"<>|]/g,"")}
+async function offer(btn,busy,make,ext,okMsg){
+  const dl=await getDl();
+  if(!dl){toast("Trang này không tải file được ở đây. Hãy dùng nút Sao chép.");return}
+  btn.disabled=true;const old=btn.textContent;btn.textContent=busy;
+  try{const blob=await make();await dl.save({filename:fileBase()+ext,data:blob});toast(okMsg)}
+  catch(e){const c=e&&e.code;
+    if(c==="declined")toast("Đã hủy tải file.");
+    else if(c==="rate_limited")toast("Đang có một hộp thoại tải file mở, hãy xử lý nó trước.");
+    else toast("Không tạo được file. Hãy thử lại hoặc dùng nút Sao chép.")}
+  finally{btn.disabled=false;btn.textContent=old}}
+$("word").onclick=()=>{if(!window.JSZip){toast("Chưa tải xong công cụ tạo Word, thử lại sau vài giây.");return}
+  offer($("word"),"Đang tạo file Word…",makeDocx,".docx","Đã tải file Word.")};
+
+$("pdf").onclick=async()=>{
+  const b=$("pdf");
+  const dl=await getDl();
+  if(!dl){toast("Trang này không tải file được ở đây. Hãy dùng nút Sao chép.");return}
+  if(!window.html2canvas||!window.jspdf){toast("Chưa tải xong công cụ tạo PDF, thử lại sau vài giây.");return}
+  b.disabled=true;const old=b.textContent;b.textContent="Đang tạo PDF…";
+  try{
+    const blob=await makePdf();
+    const nm=state.name||"";
+    const filename=`${tpl().short}${nm?" - "+nm:""}.pdf`.replace(/[\\/:*?"<>|]/g,"");
+    await dl.save({filename,data:blob});
+    toast("Đã tải file PDF.");
+  }catch(e){
+    const c=e&&e.code;
+    if(c==="declined")toast("Đã hủy tải file.");
+    else if(c==="rate_limited")toast("Đang có một hộp thoại tải file mở, hãy xử lý nó trước.");
+    else toast("Không tạo được PDF. Hãy thử lại hoặc dùng nút Sao chép.");
+  }finally{b.disabled=false;b.textContent=old}
+};
+
+function fit(){const st=$("stage"),fe=$("paperFit"),p=$("paper");
+  const W=p.offsetWidth,sc=Math.min(1,st.clientWidth/W);
+  p.style.transform=`scale(${sc})`;fe.style.width=(W*sc)+"px";fe.style.height=(p.offsetHeight*sc)+"px"}
+const _render=render;render=function(){_render();fit()};
+window.addEventListener("resize",fit);
+if(document.fonts&&document.fonts.ready)document.fonts.ready.then(fit);
+buildSpecific();render();
+</script>
+
+</body></html>
